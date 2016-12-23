@@ -15,19 +15,19 @@ services:
     links:
       - sonar-db:db
     ports:
-      - "19000:9000"
+      - "9000:9000"
     environment:
       - SONARQUBE_JDBC_URL=jdbc:mysql://db/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&createDatabaseIfNotExist=true
       - SONARQUBE_JDBC_USERNAME=root
       - SONARQUBE_JDBC_PASSWORD=123456
     volumes_from:
       - plugins
-    restart: always
+    restart: "no"
     networks:
       - build
   plugins:
     build: plugins
-    restart: never
+    restart: "no"
 networks:
   build:
     driver: bridge    
