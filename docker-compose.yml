@@ -5,7 +5,8 @@ services:
   sonar-db:
     image: mysql
     volumes:
-      - sonar-db-data:/var/lib/mysql
+      - ./db:/var/lib/mysql
+      - ./dbconf:/etc/mysql/conf.d
     environment:
       - MYSQL_ROOT_PASSWORD=123456
     networks:
@@ -20,6 +21,10 @@ services:
       - SONARQUBE_JDBC_URL=jdbc:mysql://db/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&createDatabaseIfNotExist=true
       - SONARQUBE_JDBC_USERNAME=root
       - SONARQUBE_JDBC_PASSWORD=123456
+    volumes:
+      # - ./snrconf:/opt/sonarqube/conf
+      # - ./snrdata:/opt/sonarqube/data
+      - ./snrlogs:/opt/sonarqube/logs
     volumes_from:
       - plugins
     restart: "no"
