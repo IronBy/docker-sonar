@@ -4,19 +4,19 @@ MAINTAINER Valery Sushko
 RUN apk --no-cache add --repository http://dl-cdn.alpinelinux.org/alpine/edge/community wget ca-certificates
 
 ENV PLUGINS_DIR=/opt/sonarqube/extensions/plugins \
-    FINDBUGS_PLUGIN_VERSION=3.3 \
+    FINDBUGS_PLUGIN_VERSION=3.4.4 \
     SCMSTAT_PLUGIN_VERSION=0.3.1 \
-    JAVA_VERSION=4.3.0.7717 \
-    JAVASCRIPT_VERSION=2.18.0.3454 \
-    WIDGET_PLUGIN_VERSION=1.7 \
+    JAVA_VERSION=4.4.0.8066 \
+    JAVASCRIPT_VERSION=2.19.0.3866 \
+    WIDGET_PLUGIN_VERSION=1.8.1 \
     SONARGRAPH_PLUGIN_VERSION=3.5 \
     ISSUE_ASSIGN_PLUGIN_VERSION=1.6 \
     BUILD_BREAKER_PLUGIN_VERSION=1.1 \
     ISSUES_DENSITY_PLUGIN_VERSION=1.0 \
-    PMD_PLUGIN_VERSION=2.4.1 \
+    PMD_PLUGIN_VERSION=2.6 \
     BUILD_STABILITY_PLUGIN_VERSION=1.3 \
     WEB_PLUGIN_VERSION=2.5.0.476 \
-    CSHARP_PLUGIN_VERSION=5.5.1.522 \
+    CSHARP_PLUGIN_VERSION=5.5.2.537 \
     BADGES_PLUGIN_VERSION=3.0.1
 
 WORKDIR $PLUGINS_DIR
@@ -31,10 +31,10 @@ RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/son
     && wget https://github.com/SonarQubeCommunity/sonar-groovy/releases/download/1.4-RC1/sonar-groovy-plugin-1.4-build514.jar \
     && wget https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-$JAVA_VERSION.jar \
     && wget https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-$JAVASCRIPT_VERSION.jar \
-    && wget https://github.com/SonarQubeCommunity/sonar-findbugs/releases/download/3.4/sonar-findbugs-plugin-3.4.3.jar \
-    && wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-widget-lab-plugin/${WIDGET_PLUGIN_VERSION}/sonar-widget-lab-plugin-${WIDGET_PLUGIN_VERSION}.jar \
+    && wget https://github.com/SonarQubeCommunity/sonar-findbugs/releases/download/${FINDBUGS_PLUGIN_VERSION}/sonar-findbugs-plugin-${FINDBUGS_PLUGIN_VERSION}.jar \
+    && wget https://github.com/SonarQubeCommunity/sonar-widget-lab/releases/download/${WIDGET_PLUGIN_VERSION}/sonar-widget-lab-plugin-${WIDGET_PLUGIN_VERSION}.jar \
     && wget https://github.com/SonarQubeCommunity/sonar-sonargraph/releases/download/sonar-sonargraph-plugin-${SONARGRAPH_PLUGIN_VERSION}/sonar-sonargraph-plugin-${SONARGRAPH_PLUGIN_VERSION}.jar \
-    && wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/java/sonar-pmd-plugin/${PMD_PLUGIN_VERSION}/sonar-pmd-plugin-${PMD_PLUGIN_VERSION}.jar \
+    && wget https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/${PMD_PLUGIN_VERSION}/sonar-pmd-plugin-${PMD_PLUGIN_VERSION}.jar \
     && wget https://sonarsource.bintray.com/Distribution/sonar-web-plugin/sonar-web-plugin-${WEB_PLUGIN_VERSION}.jar \
     && wget https://sonarsource.bintray.com/Distribution/sonar-csharp-plugin/sonar-csharp-plugin-${CSHARP_PLUGIN_VERSION}.jar \
     && wget https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/qualinsight-plugins-sonarqube-badges-${BADGES_PLUGIN_VERSION}/qualinsight-sonarqube-badges-${BADGES_PLUGIN_VERSION}.jar \
