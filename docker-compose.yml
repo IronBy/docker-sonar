@@ -12,7 +12,7 @@ services:
     networks:
       - build
   sonarqube:
-    image: sonarqube:alpine
+    build: sonarqube
     links:
       - sonar-db:db
     ports:
@@ -35,4 +35,4 @@ services:
     restart: "no"
 networks:
   build:
-    driver: bridge    
+    driver: bridge

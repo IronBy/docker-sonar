@@ -16,7 +16,8 @@ ENV PLUGINS_DIR=/opt/sonarqube/extensions/plugins \
     PMD_PLUGIN_VERSION=2.4.1 \
     BUILD_STABILITY_PLUGIN_VERSION=1.3 \
     WEB_PLUGIN_VERSION=2.5.0.476 \
-    CSHARP_PLUGIN_VERSION=5.5.1.522
+    CSHARP_PLUGIN_VERSION=5.5.1.522 \
+    BADGES_PLUGIN_VERSION=3.0.1
 
 WORKDIR $PLUGINS_DIR
 
@@ -35,14 +36,14 @@ RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/son
     && wget https://github.com/SonarQubeCommunity/sonar-sonargraph/releases/download/sonar-sonargraph-plugin-${SONARGRAPH_PLUGIN_VERSION}/sonar-sonargraph-plugin-${SONARGRAPH_PLUGIN_VERSION}.jar \
     && wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/java/sonar-pmd-plugin/${PMD_PLUGIN_VERSION}/sonar-pmd-plugin-${PMD_PLUGIN_VERSION}.jar \
     && wget https://sonarsource.bintray.com/Distribution/sonar-web-plugin/sonar-web-plugin-${WEB_PLUGIN_VERSION}.jar \
-    && wget https://sonarsource.bintray.com/Distribution/sonar-csharp-plugin/sonar-csharp-plugin-${CSHARP_PLUGIN_VERSION}.jar
+    && wget https://sonarsource.bintray.com/Distribution/sonar-csharp-plugin/sonar-csharp-plugin-${CSHARP_PLUGIN_VERSION}.jar \
+    && wget https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/qualinsight-plugins-sonarqube-badges-${BADGES_PLUGIN_VERSION}/qualinsight-sonarqube-badges-${BADGES_PLUGIN_VERSION}.jar \
+    && wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-build-breaker-plugin/${BUILD_BREAKER_PLUGIN_VERSION}/sonar-build-breaker-plugin-${BUILD_BREAKER_PLUGIN_VERSION}.jar \
+    && wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-issues-density-plugin/${ISSUES_DENSITY_PLUGIN_VERSION}/sonar-issues-density-plugin-${ISSUES_DENSITY_PLUGIN_VERSION}.jar
 
 # Does not work
-# RUN wget https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar
 # RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-scm-stats-plugin/${SCMSTAT_PLUGIN_VERSION}/sonar-scm-stats-plugin-${SCMSTAT_PLUGIN_VERSION}.jar
 # RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-issue-assign-plugin/${ISSUE_ASSIGN_PLUGIN_VERSION}/sonar-issue-assign-plugin-${ISSUE_ASSIGN_PLUGIN_VERSION}.jar
-# RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-build-breaker-plugin/${BUILD_BREAKER_PLUGIN_VERSION}/sonar-build-breaker-plugin-${BUILD_BREAKER_PLUGIN_VERSION}.jar
-# RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-issues-density-plugin/${ISSUES_DENSITY_PLUGIN_VERSION}/sonar-issues-density-plugin-${ISSUES_DENSITY_PLUGIN_VERSION}.jar
 # RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-build-stability-plugin/${BUILD_STABILITY_PLUGIN_VERSION}/sonar-build-stability-plugin-${BUILD_STABILITY_PLUGIN_VERSION}.jar
 
 VOLUME $PLUGINS_DIR
